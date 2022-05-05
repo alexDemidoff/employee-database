@@ -23,22 +23,22 @@ public class Employee {
     private LocalDate dob;
     private LocalDate hireDate;
     private LocalDate fireDate;
-    private String occupation;
+    private String position;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String patronymicName, LocalDate dob, LocalDate hireDate, LocalDate fireDate, String occupation) {
+    public Employee(String name, String surname, String patronymicName, LocalDate dob, LocalDate hireDate, LocalDate fireDate, String position) {
         this.name = name;
         this.surname = surname;
         this.patronymicName = patronymicName;
         this.dob = dob;
         this.hireDate = hireDate;
         this.fireDate = fireDate;
-        this.occupation = occupation;
+        this.position = position;
     }
 
-    public Employee(Long id, String name, String surname, String patronymicName, LocalDate dob, LocalDate hireDate, LocalDate fireDate, String occupation) {
+    public Employee(Long id, String name, String surname, String patronymicName, LocalDate dob, LocalDate hireDate, LocalDate fireDate, String position) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -46,7 +46,7 @@ public class Employee {
         this.dob = dob;
         this.hireDate = hireDate;
         this.fireDate = fireDate;
-        this.occupation = occupation;
+        this.position = position;
     }
 
     public Long getId() {
@@ -105,12 +105,12 @@ public class Employee {
         this.fireDate = fireDate;
     }
 
-    public String getOccupation() {
-        return occupation;
+    public String getPosition() {
+        return position;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     @Override
@@ -123,7 +123,7 @@ public class Employee {
                 ", dob=" + dob +
                 ", hireDate=" + hireDate +
                 ", fireDate=" + fireDate +
-                ", occupation='" + occupation + '\'' +
+                ", position='" + position + '\'' +
                 '}';
     }
 }

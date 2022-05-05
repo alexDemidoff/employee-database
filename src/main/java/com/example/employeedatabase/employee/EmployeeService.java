@@ -2,8 +2,11 @@ package com.example.employeedatabase.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -41,5 +44,23 @@ public class EmployeeService {
         }
 
         employeeRepository.deleteById(employeeId);
+    }
+
+    @Transactional
+    public void updateEmployee(Long employeeId, String name, String position) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
+                () -> new IllegalStateException(
+                        "Employee with id " + employeeId + " does not exists"));
+
+        if (name != null && name.length() > 0
+                && !Objects.equals(employee.getName(), name)) {
+            employee.setName(name);
+        }
+
+        if (position != null && position.length() > 0
+        && !Objects.equals(employee.getPosition(), position)) {
+            Optional<Employee> employeeOptional = employeeRepository.findById(employeeId);
+            employee.setPosition(position);
+        }
     }
 }
