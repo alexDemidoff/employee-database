@@ -1,4 +1,4 @@
-package com.example.employeedatabase.employee;
+package com.example.employeedatabase.position;
 
 import javax.persistence.*;
 
@@ -31,6 +31,14 @@ public class Position {
     public Position(String positionName, Integer salary) {
         this.positionName = positionName;
         this.salary = salary;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPositionName() {

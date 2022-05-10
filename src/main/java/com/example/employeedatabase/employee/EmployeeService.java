@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -47,7 +47,7 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void updateEmployee(Long employeeId, String name, String position) {
+    public void updateEmployee(Long employeeId, String s, String surname, String name, LocalDate dob, LocalDate hireDate, LocalDate fireDate, String position) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
                 () -> new IllegalStateException(
                         "Employee with id " + employeeId + " does not exists"));
@@ -59,7 +59,6 @@ public class EmployeeService {
 
         if (position != null && position.length() > 0
         && !Objects.equals(employee.getPosition(), position)) {
-            Optional<Employee> employeeOptional = employeeRepository.findById(employeeId);
             employee.setPosition(position);
         }
     }
